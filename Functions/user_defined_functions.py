@@ -1,8 +1,11 @@
 # A function is a block of code which only runs when it is called.
-# We can pass data (parameters) into a function.
-# A function can return data as a result.
-# 1. Code Reusable 2.Code Readability
+# User defined functions -> Functions that we define ourselves to do certain specific task are UDF
 
+# User-defined functions help to decompose a large program into small segments which makes program easy to
+# understand, maintain and debug. If repeated code occurs in a program. Function can be used to include those codes
+# and execute when needed by calling that function.
+
+# A function can return data as a result.
 def function1():
     return "Hi"
 
