@@ -1,3 +1,5 @@
+from functools import reduce
+
 # The Python interpreter has a number of functions and types built into it that are always available
 
 # abs() function Returns the absolute value of a number
@@ -252,3 +254,25 @@ print(type(c))
 a = ('a', 'b', 'c')
 b = (1, 2, 3)
 print(list(zip(a, b)))
+
+
+# reduce() function is defined in the functools module.
+# Like the map and filter functions, reduce() function receives two arguments, a function and an iterable.
+# However, it doesn't return another iterable, instead it returns a single value.
+def mult(g, h):
+    print("g=", g, " h=", h)
+    return g * h
+
+
+fact = reduce(mult, range(1, 4))
+print('Factorial of 3: ', fact)
+
+# ------------------------------------------------
+nums_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+evens = list(filter(lambda n: n % 2 == 0, nums_list))
+print(evens)
+doubles = list(map(lambda n: n * 2, evens))
+print(doubles)
+doubles_sum = reduce(lambda x, y: x + y, doubles)
+print(doubles_sum)
