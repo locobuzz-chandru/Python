@@ -1,20 +1,18 @@
 #  Higher Order Function-> a function that either accepts a function as an argument or returns a function
-
-def loud(text):
-    return text.upper()
-
-
-def quiet(text):
-    return text.lower()
+def add(x, y):
+    return x + y
 
 
-def hello(func):
-    text = func("Hello")
-    print(text)
+def sub(x, y):
+    return x - y
 
 
-# hello(loud)
-# hello(quiet)
+def function(func):
+    print(func(10, 5))
+
+
+function(add)
+function(sub)
 
 
 def divisor(x):
@@ -23,6 +21,5 @@ def divisor(x):
 
     return dividend
 
-
-divide = divisor(2)
-print(divide(10))
+# divide = divisor(2)
+# print(divide(10))

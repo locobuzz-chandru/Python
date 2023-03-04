@@ -2,13 +2,12 @@
 # Closure is a function object that remembers values in enclosing scopes even if they are not present in memory
 
 
-def multiply_outer(n):
-    def multiply_inner(x):
-        return n * x
+def outer_function(outer):
+    def inner_function(inner):
+        return outer + inner
 
-    return multiply_inner
+    return inner_function
 
-# times3 = multiply_outer(3)
-# times5 = multiply_outer(5)
-# print(times3(9))
-# print(times5(5))
+
+inner_func = outer_function(5)
+print(inner_func(10))
