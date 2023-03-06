@@ -204,14 +204,19 @@ def sort_nums20(x, y, z):
 
 
 def sort_files21():
-    pass
+    import os
+    os.chdir('E:/Projects/Python/Basic Programs')
+    result = sorted(filter(os.path.isfile, os.listdir('.')), key=os.path.getmtime)
+    print('\n'.join(map(str, result)))
 
 
 # sort_files21()
 
 
 def arguments_list22():
-    pass
+    import sys
+    print("Number of arguments:", len(sys.argv))
+    print("Argument List:", str(sys.argv))
 
 
 # arguments_list22()
@@ -423,4 +428,4 @@ def max_min_nums43(data):
     return l, s
 
 
-print(max_min_nums43([5, 47, 12, -5, 112, -23, 0, 45]))
+# print(max_min_nums43([5, 47, 12, -5, 112, -23, 0, 45]))
