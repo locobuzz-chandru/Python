@@ -225,6 +225,14 @@ def outer_hallow_diamond(rows):
         print()
 
 
+def recursive_star_pattern(rows):
+    if rows == 0:
+        return
+    else:
+        recursive_star_pattern(rows - 1)
+        print('*' * rows)
+
+
 if __name__ == "__main__":
     n = int(input('Enter number of rows : '))
     # rev_star_pyramid(n)
@@ -251,4 +259,5 @@ if __name__ == "__main__":
     # square(n)
     # triangle_and_char(n)
     # heart()
-    outer_hallow_diamond(n)
+    # outer_hallow_diamond(n)
+    # recursive_star_pattern(n)
