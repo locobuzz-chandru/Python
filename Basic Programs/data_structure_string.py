@@ -25,7 +25,6 @@ def change_char3(str1):
     char = str1[0]
     str1 = str1.replace(char, '$')
     str1 = char + str1[1:]
-
     return str1
 
 
@@ -35,8 +34,7 @@ def change_char3(str1):
 def add_string4(str1):
     if str1[-3:] == 'ing':
         str1 += 'ly'
-    else:
-        str1 += 'ing'
+    str1 += 'ing'
 
     return str1
 
@@ -46,10 +44,13 @@ def add_string4(str1):
 
 
 def find_longest_word5(words_list):
-    word_len = []
-    for n in words_list:
-        word_len.append((len(n), n))
-    word_len.sort()
+    word_len = [(len(n), n) for n in words_list]
+    for i in range(len(word_len) - 1, 0, -1):
+        for j in range(i):
+            if word_len[j] > word_len[j + 1]:
+                temp = word_len[j]
+                word_len[j] = word_len[j + 1]
+                word_len[j + 1] = temp
     return word_len[-1][1]
 
 
@@ -67,9 +68,16 @@ def user_input6():
 
 
 def sorted_form7():
-    items = input("Input comma separated sequence of words")
-    words = [word for word in items.split(",")]
-    return ",".join(sorted(list(set(words))))
+    items = input("Input comma separated sequence of words :")
+    words = list(set([word for word in items.split(",")]))
+    for i in range(len(words) - 1, 0, -1):
+        for j in range(i):
+            if words[j] > words[j + 1]:
+                temp = words[j]
+                words[j] = words[j + 1]
+                words[j + 1] = temp
+
+    return words
 
 
 # print(sorted_form7())
@@ -101,7 +109,7 @@ def formatted_text9():
 
 def substring10():
     str1 = 'a Python program to count occurrences of a substring in a string'
-    print(str1.count("Python"))
+    return str1.count("Python")
 
 
 # substring10()
@@ -122,6 +130,5 @@ def string_reverse11(str1):
 def lowercase_str12():
     str1 = 'PYTHON'
     print(str1[:2].lower() + str1[2:])
-
 
 # lowercase_str12()
