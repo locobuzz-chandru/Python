@@ -163,8 +163,70 @@ def star_hallow_diamond(rows=5):
         print()
 
 
+def hallow_triangle(rows):
+    for row in range(rows):
+        for col in range(rows):
+            if row == 0 or col == (rows - 1) or row == col:
+                print('*', end='')
+            else:
+                print(end=' ')
+        print()
+
+
+def square(rows):
+    for row in range(rows):
+        for col in range(rows):
+            if row == 0 or row == rows - 1 or col == 0 or col == rows - 1:
+                print('*', end='')
+            else:
+                print(end=' ')
+        print()
+
+
+def triangle_and_char(rows):
+    for row in range(rows):
+        count = 0
+        for col in range(rows - row - 1):
+            print(' ', end='')
+        for col in range(row + 1):
+            print('*', end='')
+            if count < row:
+                print('A', end='')
+                count = count + 1
+        print()
+
+
+def heart():
+    for row in range(6):
+        for col in range(7):
+            if (row == 0 and col % 3 != 0) or (row == 1 and col % 3 == 0) or (row - col == 2) or (row + col == 8):
+                print('*', end='')
+            else:
+                print(end=' ')
+        print()
+
+
+def outer_hallow_diamond(rows):
+    for row in range(rows, 0, -1):
+        for col in range(row, 0, -1):
+            print('*', end=' ')
+        for col in range(2 * (rows - row)):
+            print(' ', end=' ')
+        for col in range(row, 0, -1):
+            print('*', end=' ')
+        print()
+    for row in range(1, rows):
+        for col in range(row + 1):
+            print('*', end=' ')
+        for col in range(2 * (rows - row - 1)):
+            print(' ', end=' ')
+        for col in range(row + 1):
+            print('*', end=' ')
+        print()
+
+
 if __name__ == "__main__":
-    # n = int(input('Enter number of rows : '))
+    n = int(input('Enter number of rows : '))
     # rev_star_pyramid(n)
     # star_pyramid(n)
     # space_similar_rev_num(n)
@@ -184,4 +246,9 @@ if __name__ == "__main__":
     # reverse_star(n)
     # star_diamond(n)
     # number(n)
-    star_hallow_diamond()
+    # star_hallow_diamond()
+    # hallow_triangle(n)
+    # square(n)
+    # triangle_and_char(n)
+    # heart()
+    outer_hallow_diamond(n)
