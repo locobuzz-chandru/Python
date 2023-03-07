@@ -15,7 +15,8 @@ def concatenate_dict3():
     dict2 = {3: 30, 4: 40}
     dict3 = {5: 50, 6: 60}
     dict4 = {}
-    {dict4.update(d) for d in (dict1, dict2, dict3)}
+    for d in (dict1, dict2, dict3):
+        dict4.update(d)
     return dict4
 
 
@@ -32,7 +33,7 @@ def dict_with_for_loop4():
 
 
 def square_value5():
-    n = int(input("Input a number :"))
+    n = int(input("Input a number "))
     d = {x: x * x for x in range(1, n + 1)}
     return d
 
