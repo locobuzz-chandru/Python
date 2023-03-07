@@ -1,88 +1,139 @@
-def star():
-    n = int(input("Enter number of rows to be displayed: "))
+def star(n):
     for i in range(1, n + 1):
         for j in range(i):
             print('*', end='')
         print()
 
 
-# star()
-
-
-def reverse_star():
-    n = int(input("Enter number of rows to be displayed: "))
+def reverse_star(n):
     for i in range(n, 0, -1):
         for j in range(i):
             print('*', end='')
         print()
 
 
-# reverse_star()
-
-def number():
-    n = int(input("Enter number of rows to be displayed: "))
+def number(n):
     for i in range(1, n + 1):
         for j in range(i):
             print(i, end='')
         print()
 
 
-# number()
-
-def reverse_num():
-    n = int(input("Enter number of rows to be displayed: "))
+def reverse_num(n):
     for i in range(n, 0, -1):
         for j in range(i):
             print(i, end='')
         print()
 
 
-# reverse_num()
+def space_star(rows):
+    for i in range(1, rows + 1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(1, i + 1):
+            print('*', end=' ')
+        print()
 
-def num_pattern():
-    n = int(input("Enter number of rows to be displayed: "))
+
+def rev_space_star(rows):
+    for i in range(rows, 0, -1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(1, i + 1):
+            print('*', end=' ')
+        print()
+
+
+def star_pyramid(rows):
+    for i in range(1, rows + 1):
+        for j in range(1, rows - i + 1):
+            print(end=' ')
+        for j in range(i):
+            print('*', end=' ')
+        print()
+
+
+def rev_star_pyramid(rows):
+    for i in range(rows, 0, -1):
+        for j in range(1, rows - i + 1):
+            print(end=' ')
+        for j in range(i):
+            print('*', end=' ')
+        print()
+
+
+def star_diamond(rows):
+    for i in range(1, rows + 1):
+        print(' ' * (rows - i), '* ' * i)
+    for j in range(rows - 1, 0, -1):
+        print(' ' * (rows - j), '* ' * j)
+
+
+def space_similar_num(rows):
+    for i in range(1, rows + 1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(1, i + 1):
+            print(i, end=' ')
+        print()
+
+
+def space_similar_rev_num(rows):
+    for i in range(rows, 0, -1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(1, i + 1):
+            print(i, end=' ')
+        print()
+
+
+def space_num(rows):
+    for i in range(1, rows + 1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(1, i + 1):
+            print(k, end=' ')
+        print()
+
+
+def rev_space_num(rows):
+    for i in range(rows, 0, -1):
+        for j in range(rows, i, -1):
+            print(' ', end=' ')
+        for k in range(i, 0, -1):
+            print(k, end=' ')
+        print()
+
+
+def num_pattern(n):
     for i in range(1, n + 1):
         for j in range(1, i + 1):
             print(j, end='')
         print()
 
 
-# num_pattern()
-
-def reverse_num_pattern():
-    n = int(input("Enter number of rows to be displayed: "))
+def reverse_num_pattern(n):
     for i in range(n, 0, -1):
         for j in range(1, i + 1):
             print(j, end='')
         print()
 
 
-# reverse_num_pattern()
-
-
-def rev_num_pattern():
-    n = int(input("Enter number of rows to be displayed: "))
+def rev_num_pattern(n):
     for i in range(1, n + 1):
         for j in range(i, 0, -1):
             print(j, end='')
         print()
 
 
-# rev_num_pattern()
-
-
-def reverse_rev_num_pattern():
-    n = int(input("Enter number of rows to be displayed: "))
+def reverse_rev_num_pattern(n):
     for i in range(n, 0, -1):
         for j in range(i, 0, -1):
             print(j, end='')
         print()
 
 
-# reverse_rev_num_pattern()
-
-def incrementing_nums():
-    rows = int(input("Enter number of rows to be displayed: "))
+def incrementing_nums(rows):
     num = 1
     col = 1
     for i in range(1, rows + 1):
@@ -93,11 +144,7 @@ def incrementing_nums():
         col = col + 2
 
 
-# incrementing_nums()
-
-
-def increment_decrement_nums():
-    rows = int(input("Enter number of rows to be displayed: "))
+def increment_decrement_nums(rows):
     for i in range(1, rows + 1):
         for j in range(1, i + 1):
             print(j, end=' ')
@@ -106,118 +153,35 @@ def increment_decrement_nums():
         print()
 
 
-# increment_decrement_nums()
-
-def space_star():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(1, rows + 1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(1, i + 1):
-            print('*', end=' ')
+def star_hallow_diamond(rows=5):
+    for row in range(rows):
+        for col in range(rows):
+            if row + col == 2 or col - row == 2 or row - col == 2 or row + col == 6:
+                print('*', end='')
+            else:
+                print(end=' ')
         print()
 
 
-# space_star()
-
-
-def rev_space_star():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(rows, 0, -1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(1, i + 1):
-            print('*', end=' ')
-        print()
-
-
-# rev_space_star()
-
-def space_num():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(1, rows + 1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(1, i + 1):
-            print(k, end=' ')
-        print()
-
-
-# space_num()
-
-
-def rev_space_num():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(rows, 0, -1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(i, 0, -1):
-            print(k, end=' ')
-        print()
-
-
-# rev_space_num()
-
-
-def space_similar_num():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(1, rows + 1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(1, i + 1):
-            print(i, end=' ')
-        print()
-
-
-# space_similar_num()
-
-
-def space_similar_rev_num():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(rows, 0, -1):
-        for j in range(rows, i, -1):
-            print(' ', end=' ')
-        for k in range(1, i + 1):
-            print(i, end=' ')
-        print()
-
-
-# space_similar_rev_num()
-
-
-def star_pyramid():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(1, rows + 1):
-        for j in range(1, rows - i + 1):
-            print(end=' ')
-        for j in range(i):
-            print('*', end=' ')
-        print()
-
-
-# star_pyramid()
-
-
-def rev_star_pyramid():
-    rows = int(input("Enter number of rows to be displayed: "))
-    for i in range(rows, 0, -1):
-        for j in range(1, rows - i + 1):
-            print(end=' ')
-        for j in range(i):
-            print('*', end=' ')
-        print()
-
-
-# rev_star_pyramid()
-
-
-def star_diamond():
-    r = int(input("Enter number of rows to be displayed: "))
-    rows = r // 2
-    for i in range(1, rows + 1):
-        print(' ' * (rows - i), '* ' * (i))
-    for j in range(rows - 1, 0, -1):
-        print(' ' * (rows - j), '* ' * (j))
-
-
-star_diamond()
+if __name__ == "__main__":
+    # n = int(input('Enter number of rows : '))
+    # rev_star_pyramid(n)
+    # star_pyramid(n)
+    # space_similar_rev_num(n)
+    # space_similar_num(n)
+    # rev_space_num(n)
+    # space_num(n)
+    # rev_space_star(n)
+    # space_star(n)
+    # increment_decrement_nums(n)
+    # incrementing_nums(n)
+    # reverse_rev_num_pattern(n)
+    # rev_num_pattern(n)
+    # reverse_num_pattern(n)
+    # num_pattern(n)
+    # reverse_num(n)
+    # star(n)
+    # reverse_star(n)
+    # star_diamond(n)
+    # number(n)
+    star_hallow_diamond()
