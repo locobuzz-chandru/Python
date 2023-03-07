@@ -24,12 +24,9 @@ def unpack_tuple3():
 
 
 def colon_tuple4():
-    from copy import deepcopy
     tuplex = ("HELLO", 5, [], True)
-    print(tuplex)
-    tuplex_colon = deepcopy(tuplex)
-    tuplex_colon[2].append(50)
-    return tuplex_colon
+    tuplex[2].append(50)
+    return tuplex
 
 
 # print(colon_tuple4())
@@ -93,6 +90,5 @@ def reverse_tuple10():
     list1.reverse()
     tup = tuple(list1)
     return tup
-
 
 # print(reverse_tuple10())
