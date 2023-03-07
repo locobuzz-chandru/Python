@@ -1,7 +1,9 @@
+from functools import reduce
+
+
 def sum_items1():
     list1 = [1, 2, 3, 4, 5, 6]
-    sum1 = sum(i for i in list1)
-    return sum1
+    return reduce(lambda x, y: x + y, list1)
 
 
 # print(sum_items1())
@@ -9,22 +11,21 @@ def sum_items1():
 
 def multiply_list2():
     list1 = [1, 2, 3, 4, 5, 6]
-    mult = 1
-    for x in list1:
-        mult = mult * x
-    return mult
+    return reduce(lambda x, y: x * y, list1)
 
 
 # print(multiply_list2())
 
 
 def smallest_num3():
-    list1 = [7, 5, 4, 9, 2, 8, 3]
-    min1 = list1[0]
-    for a in list1:
-        if a < min1:
-            min1 = a
-    return min1
+    list_ = [4, 3, 7, 1]
+    for i in range(len(list_) - 1, 0, -1):
+        for j in range(i):
+            if list_[j] > list_[j + 1]:
+                temp = list_[j]
+                list_[j] = list_[j + 1]
+                list_[j + 1] = temp
+    return list_[0]
 
 
 # print(smallest_num3())
@@ -46,8 +47,14 @@ def last(n):
     return n[-1]
 
 
-def sort_list_last(tuples):
-    return sorted(tuples, key=last)
+def sort_list_last(tuple_):
+    for i in range(len(tuple_) - 1, 0, -1):
+        for j in range(i):
+            if tuple_[j][1] > tuple_[j + 1][1]:
+                temp = tuple_[j]
+                tuple_[j] = tuple_[j + 1]
+                tuple_[j + 1] = temp
+    return tuple_
 
 
 # print(sort_list_last([(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]))
@@ -55,13 +62,7 @@ def sort_list_last(tuples):
 
 def remove_duplicates6():
     list1 = [1, 5, 8, 4, 6, 3, 5, 4, 9, 2, 8, 1]
-    dup_items = set()
-    uniq_items = []
-    for x in list1:
-        if x not in dup_items:
-            uniq_items.append(x)
-            dup_items.add(x)
-    return dup_items
+    return list(set(list1))
 
 
 # print(remove_duplicates6())
@@ -89,26 +90,21 @@ def long_words8(n, str1):
 
 
 def common_data9(list1, list2):
-    result = False
-    for x in list1:
-        for y in list2:
-            if x == y:
-                result = True
-    return result
+    dup_items_list = [x for x in list2 if x in list1]
+    return dup_items_list
 
 
-# print(common_data9([1, 2, 3, 4, 5], [5, 6, 7, 8, 9]))
+# print(common_data9([1, 2, 3], [2, 3, 5]))
 
 
-def remove_list10():
+def remove_list10(rem_list):
     list1 = [1, 2, 3, 4, 5, 6]
-    list1.remove(2)
-    list1.remove(3)
-    list1.remove(6)
+    for x in rem_list:
+        list1.remove(x)
     return list1
 
 
-# print(remove_list10())
+# print(remove_list10([2, 4, 6]))
 
 
 def list_permutations11():
@@ -123,12 +119,8 @@ def list_diff12():
     list1 = [200, 400, 300, 80, 90]
     list2 = [200, 400, 300, 70, 100]
 
-    list_difference = []
-    for item in list1:
-        if item not in list2:
-            list_difference.append(item)
-
-    return list_difference
+    list_diff = [i for i in list1 + list2 if i not in list1 or i not in list2]
+    return list_diff
 
 
 # print(list_diff12())
@@ -150,23 +142,19 @@ def circular_list14():
     list2 = [10, 10, 10, 0, 0]
     list3 = [1, 10, 10, 0, 0]
 
-    print('Compare list1 and list2')
-    print(' '.join(map(str, list2)) in ' '.join(map(str, list1 * 2)))
-    print('Compare list1 and list3')
-    print(' '.join(map(str, list3)) in ' '.join(map(str, list1 * 2)))
+    list12 = ' '.join(map(str, list2)) in ' '.join(map(str, list1 * 2))
+    list23 = ' '.join(map(str, list3)) in ' '.join(map(str, list1 * 2))
+    return list12, list23
 
 
-# circular_list14()
+# print(circular_list14())
 
 
 def common_items15():
     list1 = [200, 400, 300, 80, 90]
     list2 = [200, 400, 300, 70, 100]
-    list3 = []
-    for x in list1:
-        if x in list2:
-            list3.append(x)
-    return list3
+    list_diff = [i for i in list1 if i in list2]
+    return list_diff
 
 
 # print(common_items15())
@@ -175,25 +163,26 @@ def common_items15():
 def group_word16():
     from itertools import groupby
     from operator import itemgetter
-    word_list = ['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
-                 'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave', 'call']
-    for letter, words in groupby(sorted(word_list), key=itemgetter(0)):
-        print(letter)
+    words_list = ['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
+                  'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave', 'call']
+    dict_ = {}
+    for letter, words in groupby(sorted(words_list), key=itemgetter(0)):
+        word_list = []
         for word in words:
-            print(word)
-        print()
+            word_list.append(word)
+        dict_[letter] = word_list
+    return dict_
 
 
-# group_word16()
+# print(group_word16())
 
 
 def remove_duplicates17():
     import itertools
     num = [[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]]
-    print("Original List", num)
     num.sort()
     new_num = list(num for num, _ in itertools.groupby(num))
-    print("New List", new_num)
+    return new_num
 
 
-# remove_duplicates17()
+# print(remove_duplicates17())
