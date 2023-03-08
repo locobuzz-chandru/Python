@@ -13,10 +13,11 @@ class SingleLinkedList:
             print("Linked list is empty")
         else:
             node = self.head
+            list_ = []
             while node:
-                print(node.data, "--> ", end='')
+                list_.append(node.data)
                 node = node.next
-            print('\n')
+            return list_
 
     def insert_at_head(self, data):
         new_node = Node(data)
@@ -68,10 +69,10 @@ L.insert_at_tail(40)
 L.insert_at_tail(60)
 L.insert_at_head(10)
 L.insert_at_index(4, 50)
-L.display()
-# L.delete_at_head()
-# L.display()
-# L.delete_at_tail()
-# L.display()
-# L.delete_at_index(3)
-# L.display()
+print(L.display())
+L.delete_at_head()
+print(L.display())
+L.delete_at_tail()
+print(L.display())
+L.delete_at_index(2)
+print(L.display())
