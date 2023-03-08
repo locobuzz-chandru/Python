@@ -225,12 +225,77 @@ def outer_hallow_diamond(rows):
         print()
 
 
+def hexagon(n):
+    l = 2 * n - 1
+    for i in range(0, n):
+        elem = i + n
+        for k in range(0, elem):
+            if (k == n + i - 1) or (k == n - i - 1):
+                print("*", end="")
+            else:
+                print(" ", end="")
+        print("")
+    for m in range(0, n - 2):
+        for j in range(0, l):
+            if j == 0 or j == l - 1:
+                print("*", end="")
+            else:
+                print(" ", end="")
+        print("")
+    r = n - 1
+    for h in range(r, -1, -1):
+        elem = h + n
+        for k in range(0, elem):
+            if (k == n + h - 1) or (k == n - h - 1):
+                print("*", end="")
+            else:
+                print(" ", end="")
+        print("")
+
+
+def c_pattern():
+    for row in range(7):
+        for col in range(5):
+            if (col == 0 and (row != 0 and row != 6)) or ((row == 0 or row == 6) and (col > 0)):
+                print('*', end='')
+            else:
+                print(end=' ')
+        print()
+
+
+def x_pattern(rows):
+    i = 0
+    j = 4
+    for row in range(rows):
+        for col in range(rows):
+            if row == i and col == j:
+                print('*', end='')
+                i = i + 1
+                j = j - 1
+            elif row == col:
+                print('*', end='')
+            else:
+                print(end=' ')
+        print()
+
+
+def star_pattern(n):
+    col = n + n - 5
+    mid = col // 2
+    for i in range(n):
+        for j in range(col):
+            if i == 2 or i == (n - 3) or i + j == mid or j - i == mid or j - i == mid or i - j == 2 or i + j == col + 1:
+                print('*', end='')
+            else:
+                print(' ', end='')
+        print()
+
+
 def recursive_star_pattern(rows):
     if rows == 0:
         return
-    else:
-        recursive_star_pattern(rows - 1)
-        print('*' * rows)
+    recursive_star_pattern(rows - 1)
+    print('*' * rows)
 
 
 if __name__ == "__main__":
@@ -253,7 +318,6 @@ if __name__ == "__main__":
     # triangle_and_char(n)
     # heart()
     # outer_hallow_diamond(n)
-    # recursive_star_pattern(n)
     # increment_decrement_nums(n)
     # incrementing_nums(n)
     # reverse_rev_num_pattern(n)
@@ -261,3 +325,8 @@ if __name__ == "__main__":
     # reverse_num_pattern(n)
     # num_pattern(n)
     # reverse_num(n)
+    hexagon(n)
+    c_pattern()
+    x_pattern(n)
+    star_pattern(n)
+    recursive_star_pattern(n)
