@@ -23,3 +23,4 @@ def merge(left_arr, right_arr):
 
 
 print(divide([1, 4, 3, 2]))
+
