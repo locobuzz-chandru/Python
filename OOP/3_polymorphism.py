@@ -10,11 +10,12 @@ class Vehicle:
 
 class Car(Vehicle):
     def fun1(self):
-        return 'Car is moving'
+        avr = super().fun1()
+        return avr
 
 
-# car = Car()
-# print(car.fun1())
+car = Car()
+print(car.fun1())
 
 
 # Two or more methods have the same name but different numbers of parameters or different types of parameters, or both.

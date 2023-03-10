@@ -1,8 +1,9 @@
 # Abstraction is a process of handling complexity by hiding unnecessary information from the user
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Polygon(ABC):
+    @abstractmethod
     def sides(self):
         pass
 

@@ -41,3 +41,6 @@ class Derived2(Base2):
 obj_3 = Base2()
 print(obj_3.p)
 obj_4 = Derived2()
+
+
+# name mgling
