@@ -33,3 +33,4 @@ print(emp2.salary)
 print(emp2.firstname)
 print(emp2.lastname)
 
+# file types - json csv pickle
