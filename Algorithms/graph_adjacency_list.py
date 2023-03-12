@@ -1,3 +1,6 @@
+# Graphs are non-linear data structures made up of a finite number of nodes or vertices and the edges that connect them.
+# In directed graphs, the connections between nodes have a direction, and are called arcs; in undirected graphs,
+# the connections have no direction and are called edges
 graph = {}
 
 
