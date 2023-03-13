@@ -30,7 +30,7 @@ def fun2():
 
 def fun3():
     txt = """regular expression, is a sequence of characters that forms a search pattern"""
-    x = re.findall("re...ar", txt)
+    x = re.findall("re...ar", txt)  # any char except new line
     return x
 
 
