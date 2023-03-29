@@ -17,7 +17,6 @@ class RabbitmqServer:
         self._connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.server.host))
         self._channel = self._connection.channel()
         self._tem = self._channel.queue_declare(queue=self.server.queue)
-        print('Server started waiting for Message')
 
     @staticmethod
     def callback(ch, method, properties, body):
