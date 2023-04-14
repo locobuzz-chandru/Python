@@ -1,9 +1,9 @@
-def bubble_sort(list_):
-    for i in range(len(list_) - 1, 0, -1):
+def bubble_sort(nums):
+    for i in range(len(nums) - 1, 0, -1):
         for j in range(i):
-            if list_[j] > list_[j + 1]:
-                list_[j], list_[j + 1] = list_[j + 1], list_[j]
-    return list_
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+    return nums
 
 
 l1 = [3, 1, 4, 2]

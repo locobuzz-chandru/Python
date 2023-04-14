@@ -20,3 +20,6 @@ def merge(left_arr, right_arr):
     else:
         merged = merged + left_arr
     return merged
+
+
+print(divide([3, 2, 5, 6, 4, 1]))
