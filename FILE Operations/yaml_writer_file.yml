@@ -1,0 +1,10 @@
+address:
+  city: Bangalore
+  country: India
+  zip: 123456
+age: 25
+lang:
+- Python
+- C
+- Java
+name: ABC

@@ -1,0 +1,14 @@
+address: &address
+  street: Street 15
+  city: My city
+  state: My state
+
+person1:
+  name: John
+  age: 30
+  address: *address
+
+person2:
+  name: Bob
+  age: 35
+  address: *address
