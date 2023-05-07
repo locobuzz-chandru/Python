@@ -18,10 +18,10 @@ class Derived1(Base1):
         print("call the protected member of base class: ", self._p)
 
 
-obj_1 = Derived1()
-obj_2 = Base1()
-print("Access the protected member of obj_1: ", obj_1._p)
-print("Access the protected member of obj_2: ", obj_2._p)
+# obj_1 = Derived1()
+# obj_2 = Base1()
+# print("Access the protected member of obj_1: ", obj_1._p)
+# print("Access the protected member of obj_2: ", obj_2._p)
 
 
 # Private members -> should not be accessed by anyone outside the class or any base classes

@@ -2,22 +2,22 @@
 # YAML allows us to represent complex data structures in a human-readable format. It is unambiguous. YAML unambiguously
 # specifies the data structures of the serialized data, so there's no need to rely on comments or documentation.
 
-#key: value
-#
-#mylist:
-#  - item1
-#  - item2
-#  - item3
-#
-#mydict:
-#  key1: value1
-#  key2: value2
-#  key3: value3
-#
-#multi-line-str:
-#  Hello world
-#  YAML Files in Python
-#  Django rest framework
+key: value
+
+mylist:
+  - item1
+  - item2
+  - item3
+
+mydict:
+  key1: value1
+  key2: value2
+  key3: value3
+
+multi-line-str:
+  Hello world
+  YAML Files in Python
+  Django rest framework
 
 range:
   min: 1

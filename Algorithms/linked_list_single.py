@@ -39,6 +39,16 @@ class SingleLinkedList:
         new_node.next = node.next
         node.next = new_node
 
+    def reverse(self):
+        prev = None
+        node = self.head
+        while node is not None:
+            next_node = node.next
+            node.next = prev
+            prev = node
+            node = next_node
+        self.head = prev
+
     def delete_at_head(self):
         node = self.head
         self.head = node.next
@@ -72,9 +82,12 @@ if __name__ == '__main__':
     L.insert_at_head(10)
     L.insert_at_index(4, 50)
     print(L.display())
-    L.delete_at_head()
+    L.reverse()
     print(L.display())
-    L.delete_at_tail()
-    print(L.display())
-    L.delete_at_index(2)
-    print(L.display())
+    # L.delete_at_head()
+    # print(L.display())
+    # L.delete_at_tail()
+    # print(L.display())
+    # L.delete_at_index(2)
+    # print(L.display())
+# sbi.09249@sbi.co.in
