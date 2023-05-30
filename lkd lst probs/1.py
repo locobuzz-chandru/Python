@@ -1,8 +1,6 @@
 # Reverse a Linked List: Given a singly linked list, reverse it in-place.
 # Detect a Cycle in a Linked List: Determine if a linked list contains a cycle and return the starting node of the cycle
 # if present.
-# Flatten a Multilevel Linked List: Flatten a linked list that has a multilevel structure, where each node may have a
-# child linked list.
 class Node:
     def __init__(self, data=None):
         self.data = data
