@@ -80,13 +80,13 @@ class TaskManager:
         try:
             return [task.task_id for task in self.tasks.values() if task.priority == priority]
         except:
-            raise Exception("priority value does not exists")
+            raise Exception("priority value does not exist")
 
     def complete_task(self, task_id):
         try:
             self.tasks[task_id].completed = True
         except:
-            raise Exception("task id does not exists")
+            raise Exception("task id does not exist")
 
     def get_task_details(self, task_id):
         try:

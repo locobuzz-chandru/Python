@@ -1,9 +1,10 @@
 from datetime import datetime, date
+from bst import BinaryTree
 
 
 class Task:
     def __init__(self, task_id: int, description: str, priority: str, assignee: str, due_date, completed=False):
-        self.task_id = task_id
+        self.id = task_id
         self.description = description
         self.priority = priority
         self.assignee = assignee
@@ -12,96 +13,54 @@ class Task:
 
 
 class TaskManager:
-    def __init__(self, task=None):
-        self.task = task
-        self.left = None
-        self.right = None
+    def __init__(self):
+        self.tasks = BinaryTree()
 
     def add_task(self, task):
-        if self.task is None:
-            self.task = task
-            return
-        if self.task == task:
-            return
-        if task.task_id < self.task.task_id:
-            if self.left is None:
-                self.left = TaskManager(task)
-            else:
-                self.left.add_task(task)
-        else:
-            if self.right is None:
-                self.right = TaskManager(task)
-            else:
-                self.right.add_task(task)
+        self.tasks.add(task)
 
-    def total_tasks(self, task):
-        if task is None:
-            return 0
-        return 1 + self.total_tasks(task.left) + self.total_tasks(task.right)
+    def total_tasks(self):
+        return self.tasks.count()
 
-    def complete_task(self, task_id):
-        if self.task is None:
-            return
-        elif self.task.task_id == task_id:
-            self.task.completed = True
-            return
-        elif task_id < self.task:
-            if self.left is None:
-                return
-            else:
-                self.left.search(task_id)
-        else:
-            if self.right is None:
-                return
-            else:
-                self.right.search(task_id)
-
-    def preorder(self, result: list):
-        result.append(self.task)
-        if self.left:
-            self.left.preorder(result)
-        if self.right:
-            self.right.preorder(result)
-        return result
+    def _get_tasks(self):
+        return self.tasks.traverse_inorder()
 
     def get_completed_tasks(self):
-        result = []
-        self.preorder(result)
-        return len([task.task_id for task in result if task.completed])
+        return len([task.id for task in self._get_tasks() if task.completed])
 
     def get_incomplete_tasks(self):
-        result = self.preorder([])
-        return len([tasks.task_id for tasks in result if not tasks.completed])
+        return len([tasks.id for tasks in self._get_tasks() if not tasks.completed])
 
     def get_overdue_tasks(self):
-        result = self.preorder([])
-        return sum([1 if (date.today() - task.due_date).days >= 0 else 0 for task in result if not task.completed])
+        return sum([1 if (date.today() - task.due_date).days >= 0 else 0 for task in self._get_tasks() if
+                    not task.completed])
 
     def get_tasks_by_priority(self, priority):
-        result = self.preorder([])
-        return [task.task_id for task in result if task.priority == priority]
+        tasks = [task.id for task in self._get_tasks() if task.priority == priority]
+        if tasks:
+            return tasks
+        raise Exception("priority value does not exist")
+
+    def _get_task_by_id(self, task_id):
+        task = self.tasks.search(task_id)
+        if task:
+            return task
+        raise Exception("task id does not exist")
+
+    def complete_task(self, task_id):
+        self._get_task_by_id(task_id).completed = True
 
     def get_task_details(self, task_id):
-        if self.task is None:
-            return
-        elif self.task.task_id == task_id:
-            return f"Task ID     : {self.task.task_id}\n" \
-                   f"Description : {self.task.description}\n" \
-                   f"Priority    : {self.task.priority}\n" \
-                   f"Assignee    : {self.task.assignee}\n" \
-                   f"Due Date    : {self.task.due_date}\n" \
-                   f"Completed   : {self.task.completed}"
-
-        elif task_id < self.task:
-            if self.left is None:
-                return
-            else:
-                self.left.search(task_id)
-        else:
-            if self.right is None:
-                return
-            else:
-                self.right.search(task_id)
+        try:
+            tsk = self._get_task_by_id(task_id)
+            return f"Task ID     : {tsk.id}\n" \
+                   f"Description : {tsk.description}\n" \
+                   f"Priority    : {tsk.priority}\n" \
+                   f"Assignee    : {tsk.assignee}\n" \
+                   f"Due Date    : {tsk.due_date}\n" \
+                   f"Completed   : {tsk.completed}"
+        except:
+            raise Exception("task id does not exists")
 
 
 if __name__ == '__main__':
@@ -115,12 +74,12 @@ if __name__ == '__main__':
     for t in [chandru, ravi, shuvam, milan, ajay]:
         task_manager.add_task(t)
 
-    # print(task_manager.total_tasks(task_manager))
-    # print(task_manager.get_overdue_tasks())
-    # print(task_manager.get_tasks_by_priority('B'))
-    # print(task_manager.get_completed_tasks())
-    # print(task_manager.get_incomplete_tasks())
+    print(task_manager.total_tasks())
+    print(task_manager.get_overdue_tasks())
+    print(task_manager.get_tasks_by_priority('B'))
+    print(task_manager.get_completed_tasks())
+    print(task_manager.get_incomplete_tasks())
     task_manager.complete_task(1)
-    # print(task_manager.get_completed_tasks())
-    # print(task_manager.get_incomplete_tasks())
-    print(task_manager.get_task_details(1))
+    print(task_manager.get_completed_tasks())
+    print(task_manager.get_incomplete_tasks())
+    print(task_manager.get_task_details(2))
