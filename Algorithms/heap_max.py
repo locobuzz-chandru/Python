@@ -1,4 +1,3 @@
-# Python3 implementation of Max Heap
 import sys
 
 
