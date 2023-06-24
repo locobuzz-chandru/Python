@@ -47,5 +47,6 @@ if __name__ == '__main__':
     for i in [0, 2, 4, 6, 8, 9]:
         l2.insert(i)
     print(l2.display())
+    print(mergeTwoLists(l1.head, l2.head))
     l1.head = mergeTwoLists(l1.head, l2.head)
     print(l1.display())
